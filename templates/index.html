@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cloth Weight Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        p{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Cloth Weight Calculator!</h1>
+    <form action="/final_result" method="post">
+        <label for="cloth_weight">Enter cloth weight in grams:</label>
+        <input type="number" name="cloth_weight" id="cloth_weight" required><br><br>
+
+        <label for="multiplier">Select a multiplier:</label>
+        <select name="multiplier" id="multiplier" onchange="calculateResult()" required>
+            <option value="0">0x</option>
+            <option value="1.2">1.2x</option>
+            <option value="1.3">1.3x</option>
+            <option value="1.4">1.4x</option>
+            <option value="1.5">1.5x</option>
+            <option value="1.6">1.6x</option>
+        </select><br><br>
+
+
+        <p id="result_after_multiplier" onchange="calculateResult()" required>Result after multiplier: </p>
+
+        <label for="material">Select a material:</label>
+        <select name="material" id="material" required>
+            <option value="1">BHOR EPCH</option>
+            <option value="2">BHOR HIFC</option>
+            <option value="3">BHOR EPVB</option>
+            <option value="4">BHOR putty GCK 28 : BHOR putty GCH 29</option>
+            <option value="5">LY556 Resin</option>
+        </select><br><br>
+
+        <div id="resin_choice_section" style="display:none;">
+            <label for="resin_amount">Select a Hardner:</label>
+            <select name="resin_amount" id="resin_amount">
+                <option value="1">HY951</option>
+                <option value="2">Slow curing resin</option>
+                <option value="3">Fast curing resin</option>
+
+            </select><br><br>
+        </div>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    <script>
+
+        function calculateResult() {
+            var clothWeight = parseFloat(document.getElementById('cloth_weight').value);
+            var multiplier = parseFloat(document.getElementById('multiplier').value);
+            var result = clothWeight * multiplier;
+            document.getElementById('result_after_multiplier').innerText = "Result after multiplier: " + result;
+        }
+
+        document.getElementById('material').addEventListener('change', function () {
+            var material = this.value;
+            if (material == 5) {
+                document.getElementById('resin_choice_section').style.display = 'block';
+            } else {
+                document.getElementById('resin_choice_section').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
