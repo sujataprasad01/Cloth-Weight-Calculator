@@ -20,9 +20,10 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
+        h2 {
+
             text-align: center;
-            color: #333;
+            color: #008000;
         }
 
         form {
@@ -48,7 +49,7 @@
         button[type="submit"] {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #ff0000; 
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -66,11 +67,35 @@
         p{
             margin-bottom: 1rem;
         }
+        @media(max-width: 992px) {
+            .container {
+                width: 90%;
+                font-size: 1.7rem;
+            }
+            input[type="number"] ,select{
+            font-size: 1rem;
+        
+            /* width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; */
+        }
+        
+        button[type="submit"] {
+            font-size: 1.8rem;
+        }
+            /* form{
+                height: 100vh;
+                width: 100vw;
+            } */
+        }
     </style>
 </head>
 
-<body>
-    <h1>Welcome to the Cloth Weight Calculator!</h1>
+<body class="container">
+    <h2>Welcome to the Cloth Weight Calculator!</h2>
     <form action="/final_result" method="post">
         <label for="cloth_weight">Enter cloth weight in grams:</label>
         <input type="number" name="cloth_weight" id="cloth_weight" required><br><br>
